@@ -1,26 +1,26 @@
-import {SERVICES_REQUEST,SERVICES_SUCCESS,SERVICES_FAILURE}  from "../actions/servicesAction";
+import {SIMILAR_REQUEST, SIMILAR_SUCCESS, SIMILAR_FAILURE} from  "../actions/similarAction";
 
 const initialState = {
     isFetching: false,
     services: []
 };
 
-export  const services = (state = initialState, action) => {
+export const similarServices = (state = initialState, action) => {
     switch (action.type){
-        case SERVICES_REQUEST:
+        case SIMILAR_REQUEST:
             return {
                 ...initialState,
                 isFetching:true
             }
-        case SERVICES_SUCCESS:
+        case SIMILAR_SUCCESS:
             return {
                 isFetching:false,
-                services:[...action.services]
+                services:[...action.service]
             }
-        case SERVICES_FAILURE:
+        case SIMILAR_FAILURE:
             return {
                 isFetching:false,
-                services:[...state]
+                services:[...state.service]
             }
         default:
             return state

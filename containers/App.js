@@ -17,7 +17,7 @@ const mapStateToProps = (state)=> ({
     errorMessage:state.errorMessage
 })
 const mapDispatchToProps = (dispatch)=> ({
-    action:bindActionCreators(servicesAction, dispatch)
+    action:bindActionCreators(servicesAction.loadServices, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

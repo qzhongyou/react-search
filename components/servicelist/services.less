@@ -13,9 +13,31 @@
     border-radius: 6px;
     box-shadow: 2px 2px 13px 0 rgba(1,1,0,.1);
     margin-bottom: 20px;
+    .img-box{
+      position: relative;
+      overflow: hidden;
+      &:hover{
+        .similar{
+          bottom: 0px;
+        }
+      }
+      .similar{
+        transition: all 0.3s;
+        position: absolute;
+        bottom: -30px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        display: block;
+        color: #fff;
+        line-height: 30px;
+        background: #999999;
+        z-index: 10;
+      }
+    }
     img{
       width: 100%;
-      min-height: 308px;
+      height: 308px;
     }
     .title{
       .text-2line;

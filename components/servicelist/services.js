@@ -6,9 +6,12 @@ import "./services.less"
 
 const ServiceItem = ({service}) => (
         <div  className="item">
-            <Link to={`/service/${service.id}`}>
-                <img alt={`${service.title}`} src={`http://rms.zhubajie.com/resource/redirect?key=${service.image}`} />
-            </Link>
+            <div className="img-box">
+                <Link to={`/service/${service.id}`}>
+                    <img alt={`${service.title}`} src={`http://rms.zhubajie.com/resource/redirect?key=${service.image}`} />
+                </Link>
+                <Link className ="similar" to= {`/similar/${service.id}`}>找相似</Link>
+            </div>
             <p className="title">
                 <Link to={`/service/${service.id}`}>
                     {service.title}
@@ -31,8 +34,15 @@ class Services extends Component {
     }
 
     componentWillMount() {
-        this.props.action.loadServices();
+        this.props.action();
     }
+    //就找相似页面使用
+    componentWillReceiveProps(nextProps){
+        if(nextProps.id !== this.props.id){
+            this.props.action();
+        }
+    }
+
 
     render() {
     const {services, errorMessage} = this.props;
@@ -50,7 +60,7 @@ class Services extends Component {
 
         return (
             < Row  gutter={16} className="services">
-            {services.servives.map((service,index)=> {
+            {services.services.map((service,index)=> {
                 return (
                     <Col span={6} key = {service.id}>
                         < ServiceItem service = {service} / >
