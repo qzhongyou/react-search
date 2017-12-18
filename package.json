@@ -1,7 +1,7 @@
 {
   "name": "react-search",
   "version": "0.0.0",
-  "description": "搜索我的足迹页-react简版",
+  "description": "搜索我的足迹页-react简版 react,redux项目 开发详情 和 个人总结",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
