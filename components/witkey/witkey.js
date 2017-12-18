@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Row,Spin,List,Avatar} from "antd";
-import { Link } from "react-router-dom";
+import {Row,Spin,List,Avatar ,Alert} from "antd";
 import "./witkey.less"
 
 
@@ -45,7 +44,14 @@ class Witkey extends Component {
         }
 
         if (errorMessage) {
-            return <p> {errorMessage} < /p >;
+            return (
+                <Alert
+                    message="Error Message"
+                    description={errorMessage}
+                    type="error"
+                    closable
+                />
+            );
         }
         return (
                 <List className = "witkey"

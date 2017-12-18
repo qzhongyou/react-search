@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Row , Col  ,Spin} from "antd";
+import {Row , Col  ,Spin ,Alert,DatePicker} from "antd";
 import { Link } from "react-router-dom";
 import "./services.less"
-
+import moment from "moment";
 const ServiceItem = ({service}) => (
         <div  className="item">
             <div className="img-box">
@@ -45,7 +45,8 @@ class Services extends Component {
 
 
     render() {
-    const {services, errorMessage} = this.props;
+    const {services, errorMessage ,date ,selectDate} = this.props;
+    const dateFormat ='YYYYMMDD';
     if (services.isFetching) {
             return (
                 <Row className="loading" type="flex"  justify="center"  align="middle">
@@ -55,19 +56,29 @@ class Services extends Component {
        }
 
         if (errorMessage) {
-            return <p> {errorMessage} < / p >;
+            return (
+                <Alert
+                    message="Error Message"
+                    description={errorMessage}
+                    type="error"
+                    closable
+                />
+            );
         }
 
         return (
-            < Row  gutter={16} className="services">
-            {services.services.map((service,index)=> {
-                return (
-                    <Col span={6} key = {service.id}>
-                        < ServiceItem service = {service} / >
-                    </Col>
-                        )
-                })}
-            </Row >)
+            <div>
+                <DatePicker defaultValue={moment(date, dateFormat)} format={dateFormat} onChange ={selectDate} />
+                < Row  gutter={16} className="services">
+                {services.services.map((service,index)=> {
+                    return (
+                        <Col span={6} key = {service.id}>
+                            < ServiceItem service = {service} / >
+                        </Col>
+                            )
+                    })}
+                </Row >
+            </div>)
     }
 }
 
