@@ -7,7 +7,7 @@ import Service from "../components/servicelist/services";
 class SimilarServices extends Component {
     render() {
         const {action, similarServices, errorMessage, match} = this.props;
-        return (<Service action={action} id= {match.params.id} services={similarServices} errorMessage={errorMessage}/>)
+        return (<Service action={action} id = {match.params.id} services={similarServices} errorMessage={errorMessage}/>)
     }
 }
 

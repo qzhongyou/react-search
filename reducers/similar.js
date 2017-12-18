@@ -26,4 +26,3 @@ export const similarServices = (state = initialState, action) => {
             return state
     }
 }
-
