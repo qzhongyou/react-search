@@ -24,6 +24,24 @@ npm start
 #### 12.18
 * 项目基本功能完成,项目待优化。以后几天将详细介绍开发过程。
 
+#### 12.19
+* 添加日期筛选功能,该功能需要注意两点:
+1. 该功能只有足迹页面具备,但和找相似页面使用的同一个展示主键,所以需要一下设置:
+```
+ <Route path="/" exact render={()=>{ //首页显示
+     return  <DatePicker defaultValue={moment(date, dateFormat)} format={dateFormat} onChange ={selectDate} />
+ }} />
+```
+2. 关于日期筛选功能实现的 思考。   
+* 首先日期筛选后应当触发`servicesAction`。这里触发的方式有2种,第一种在`onChange`事件中触发,将`dateString`作为日期的实参传入`servicesAction`,第二种将日期的state作为参数传入`servicesAction`,
+第二种方式采用了状态来触发行为,明显要优于第一种。
+```
+ componentWillReceiveProps(nextProps){
+        if(nextProps.date !== this.props.date && nextProps.date !==""){
+            this.props.action(nextProps.date);
+        }
+    }
+```
 
 
 
