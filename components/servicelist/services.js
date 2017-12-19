@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Row , Col  ,Spin ,Alert,DatePicker} from "antd";
-import { Link } from "react-router-dom";
+import { Link ,Route} from "react-router-dom";
 import "./services.less"
 import moment from "moment";
 const ServiceItem = ({service}) => (
@@ -34,12 +34,17 @@ class Services extends Component {
     }
 
     componentWillMount() {
-        this.props.action();
+        this.props.action(this.props.date);
     }
-    //就找相似页面使用
+
     componentWillReceiveProps(nextProps){
+        //找相似页面(暂时)
         if(nextProps.id !== this.props.id){
             this.props.action();
+        }
+        //我的足迹页(暂时)
+        if(nextProps.date !== this.props.date && nextProps.date !==""){
+            this.props.action(nextProps.date);
         }
     }
 
@@ -68,7 +73,9 @@ class Services extends Component {
 
         return (
             <div>
-                <DatePicker defaultValue={moment(date, dateFormat)} format={dateFormat} onChange ={selectDate} />
+                <Route path="/" exact render={()=>{ //首页显示
+                    return  <DatePicker defaultValue={moment(date, dateFormat)} format={dateFormat} onChange ={selectDate} />
+                }} />
                 < Row  gutter={16} className="services">
                 {services.services.map((service,index)=> {
                     return (

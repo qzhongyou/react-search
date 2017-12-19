@@ -16,6 +16,7 @@ export const loadExclusiveWitkey = () =>(dispatch, getState)=> {
     dispatch({type: WITKEY_DETAIL_REQUEST});
     fetchJsonp("http://alg.api.zbj.com/indexRecommend/intention/shops/", {
         jsonpCallback: "jsonpcallback",
+        jsonpCallbackFunction:"jsonp_witkey",
         timeout: 3000,
     }).then(response => {
         return response.json();
