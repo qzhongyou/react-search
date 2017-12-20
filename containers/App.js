@@ -18,6 +18,7 @@ const mapStateToProps = (state)=> ({
     date:state.date.date,
     errorMessage:state.errorMessage
 })
+
 const mapDispatchToProps = (dispatch)=> ({
     action:bindActionCreators(servicesAction.loadServices, dispatch),
     selectDate:function(date, dateString){
