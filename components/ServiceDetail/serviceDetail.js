@@ -7,7 +7,6 @@ import IsFetching from "../common/IsFetching";
 
 @ErrorMessage
 @IsFetching
-
 class ServceDetail extends Component {
     componentWillMount() {
         const {action, match} =this.props;

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {List,Avatar } from "antd";
 import "./witkey.less"
+import  ErrorMessage from "../common/ErrorMessage";
+import IsFetching from "../common/IsFetching";
 
 
 const  avatar  = ( uid, size) => {
@@ -23,6 +25,8 @@ const  avatar  = ( uid, size) => {
     return sImgUrl;
 };
 
+@ErrorMessage
+@IsFetching
 class Witkey extends Component {
     static propTypes = {
         exclusive: PropTypes.object.isRequired,
