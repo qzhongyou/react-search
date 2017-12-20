@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as servicesAction from "../actions/servicesAction";
-import Services from "../components/Services/services";
+import Services from "../components/Services/footprint";
 import  {selectDate}  from "../actions/dateAction";
 class App extends Component {
     render(){

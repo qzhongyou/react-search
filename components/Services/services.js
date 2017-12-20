@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Row , Col  ,Spin ,Alert,DatePicker} from "antd";
-import { Link ,Route} from "react-router-dom";
+import {Row , Col  ,Spin ,Alert} from "antd";
+import { Link } from "react-router-dom";
 import "./services.less"
-import moment from "moment";
 const ServiceItem = ({service}) => (
         <div  className="item">
             <div className="img-box">
@@ -33,25 +32,8 @@ class Services extends Component {
         errorMessage: PropTypes.string.isRequired
     }
 
-    componentWillMount() {
-        this.props.action(this.props.date);
-    }
-
-    componentWillReceiveProps(nextProps){
-        //找相似页面(暂时)
-        if(nextProps.id !== this.props.id){
-            this.props.action();
-        }
-        //我的足迹页(暂时)
-        if(nextProps.date !== this.props.date && nextProps.date !==""){
-            this.props.action(nextProps.date);
-        }
-    }
-
-
     render() {
-    const {services, errorMessage ,date ,selectDate} = this.props;
-    const dateFormat ='YYYYMMDD';
+    const {services, errorMessage } = this.props;
     if (services.isFetching) {
             return (
                 <Row className="loading" type="flex"  justify="center"  align="middle">
@@ -73,9 +55,6 @@ class Services extends Component {
 
         return (
             <div>
-                <Route path="/" exact render={()=>{ //首页显示
-                    return  <DatePicker defaultValue={moment(date, dateFormat)} format={dateFormat} onChange ={selectDate} />
-                }} />
                 < Row  gutter={16} className="services">
                 {services.services.map((service,index)=> {
                     return (
@@ -90,3 +69,4 @@ class Services extends Component {
 }
 
 export default Services;
+
