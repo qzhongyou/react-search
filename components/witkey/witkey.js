@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Row,Spin,List,Avatar ,Alert} from "antd";
+import {List,Avatar } from "antd";
 import "./witkey.less"
 
 
@@ -34,25 +34,8 @@ class Witkey extends Component {
     }
 
     render() {
-        const {exclusive, errorMessage} = this.props;
-        if (exclusive.isFetching) {
-            return (
-                <Row className="loading" type="flex"  justify="center"  align="middle">
-                    <Spin tip="Loading..."/>
-                </Row>
-            )
-        }
+        const {exclusive} = this.props;
 
-        if (errorMessage) {
-            return (
-                <Alert
-                    message="Error Message"
-                    description={errorMessage}
-                    type="error"
-                    closable
-                />
-            );
-        }
         return (
                 <List className = "witkey"
                     itemLayout="vertical"

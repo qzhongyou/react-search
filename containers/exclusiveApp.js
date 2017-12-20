@@ -7,7 +7,7 @@ import Witkey from "../components/witkey/witkey";
 class ExclusiveWitkeys extends Component {
     render() {
         const {action, exclusive, errorMessage} = this.props;
-        return (<Witkey action={action} exclusive={exclusive} errorMessage={errorMessage}/>)
+        return (<Witkey action={action} exclusive={exclusive} isFetching = {exclusive.isFetching} errorMessage={errorMessage}/>)
     }
 }
 

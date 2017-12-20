@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {Row ,Spin ,Col ,Alert} from "antd";
+import {Row  ,Col } from "antd";
 import "./serviceDetail.less";
+import  ErrorMessage from "../common/ErrorMessage";
+import IsFetching from "../common/IsFetching";
+
+@ErrorMessage
+@IsFetching
+
 class ServceDetail extends Component {
     componentWillMount() {
         const {action, match} =this.props;
@@ -9,25 +15,9 @@ class ServceDetail extends Component {
     }
 
     render() {
-        const {serviceDetail, errorMessage} = this.props;
-        const {isFetching,service } = serviceDetail;
-        if (isFetching) {
-            return (
-                <Row className="loading" type="flex" justify="center" align="middle">
-                    <Spin tip="Loading..."/>
-                </Row>
-            )
-        }
-        if (errorMessage) {
-            return (
-                <Alert
-                    message="Error Message"
-                    description={errorMessage}
-                    type="error"
-                    closable
-                />
-            );
-        }
+        const {serviceDetail} = this.props;
+        const { service } = serviceDetail;
+
         return (
             <Row className="service-detail" type="flex" justify="space-around">
                 <Col span={5}>

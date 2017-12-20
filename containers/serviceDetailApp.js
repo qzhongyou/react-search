@@ -7,7 +7,7 @@ import Service from "../components/ServiceDetail/serviceDetail";
 class ServiceDetail extends Component {
     render() {
         const {action, serviceDetail, errorMessage} = this.props;
-        return (<Service  action = {action} serviceDetail ={serviceDetail} errorMessage ={errorMessage}/>)
+        return (<Service  action = {action} serviceDetail ={serviceDetail} isFetching ={serviceDetail.isFetching} errorMessage ={errorMessage}/>)
     }
 }
 
