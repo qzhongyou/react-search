@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as serviceDetailAction from "../actions/serviceDetailAction";
-import Service from "../components/serviceDetail/serviceDetail";
+import Service from "../components/ServiceDetail/serviceDetail";
 
 class ServiceDetail extends Component {
     render() {
