@@ -4,6 +4,7 @@ import {Row, Col, Spin} from "antd";
 import {Link} from "react-router-dom";
 import "./services.less"
 import  ErrorMessage from "../common/ErrorMessage";
+import IsFetching from "../common/IsFetching";
 
 const ServiceItem = ({service}) => (
     <div className="item">
@@ -26,6 +27,7 @@ const ServiceItem = ({service}) => (
 )
 
 @ErrorMessage
+@IsFetching
 class Services extends Component {
     static propTypes = {
         services: PropTypes.object.isRequired
@@ -33,13 +35,6 @@ class Services extends Component {
 
     render() {
         const {services} = this.props;
-        if (services.isFetching) {
-            return (
-                <Row className="loading" type="flex" justify="center" align="middle">
-                    <Spin tip="Loading..."/>
-                </Row>
-            )
-        }
         return (
             <div>
                 < Row gutter={16} className="services">

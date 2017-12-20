@@ -8,7 +8,7 @@ class App extends Component {
     render(){
         const {action,services ,errorMessage ,date ,selectDate} = this.props;
         return (<div >
-                    <Services action = {action} date={date} selectDate = {selectDate} services = {services} errorMessage = {errorMessage}/>
+                    <Services action = {action} date={date} selectDate = {selectDate} services = {services} isFetching ={services.isFetching} errorMessage = {errorMessage}/>
                 </div>)
     }
 }
