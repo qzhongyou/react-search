@@ -50,4 +50,4 @@ npm start
 
 #### 12.26 v2.0
 * 修复之前错误提示和loading效果的bug。之前因为每次loading之后,都会重新渲染WrappedComponent组件,导致不断触发componentWillMount,然后不断loading,一直循环。
-
+* 之前每次异步请求都需要反复写加载前,加载成功,失败的action,所以自定义中间件redux-fetch,来减少代码量。
