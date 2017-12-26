@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
 import {Alert} from "antd";
 const  ErrorMessage = (WrappedComponent)=>(props) => {
-    const {errorMessage} = props;
-    if (errorMessage) {
-        return (
-            <Alert
-                message="Error Message"
-                description={errorMessage}
-                type="error"
-                closable
-            />
-        );
+    const errorMessage = ()=>{
+        const {errorMessage} = props;
+        if (errorMessage) {
+            return (
+                <Alert
+                    message="Error Message"
+                    description={errorMessage}
+                    type="error"
+                    closable
+                />
+            );
+        }
     }
-    return <WrappedComponent {...props}/>
+    return (<div>
+                {errorMessage()}
+                <WrappedComponent {...props}/>
+            </div>
+        )
 }
 
 
