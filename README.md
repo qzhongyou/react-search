@@ -48,5 +48,6 @@ npm start
 * 因为错误提示和loading效果,反复在各组件中使用,使用提取为公共高阶组件。
 
 
-
+#### 12.26 v2.0
+* 修复之前错误提示和loading效果的bug。之前因为每次loading之后,都会重新渲染WrappedComponent组件,导致不断触发componentWillMount,然后不断loading,一直循环。
 
