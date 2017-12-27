@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import {errorMessage} from './errorMessage';
-//import {services} from './serviceList';
 import {serviceDetail} from "./serviceDetail";
 import {similarServices} from "./similar";
 import {exclusive} from "./exclusive";
