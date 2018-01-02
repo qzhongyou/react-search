@@ -28,7 +28,7 @@ const ServiceItem = ({service}) => (
 
 @ErrorMessage
 @IsFetching
-class Services extends Component {
+class ServiceList extends Component {
     static propTypes = {
         services: PropTypes.object.isRequired
     }
@@ -51,5 +51,5 @@ class Services extends Component {
 }
 
 
-export default Services;
+export default ServiceList;
 

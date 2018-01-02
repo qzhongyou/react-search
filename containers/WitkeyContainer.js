@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as exclusiveAction from "../actions/witkeyAction";
-import Witkey from "../components/witkey/witkey";
+import WitkeyList from "../components/Witkey/WitkeyList";
 
-class ExclusiveWitkeys extends Component {
+class WitkeyContainer extends Component {
     render() {
         const {action, witkeys, errorMessage} = this.props;
-        return (<Witkey action={action} witkeys={witkeys} isFetching = {witkeys.isFetching} errorMessage={errorMessage}/>)
+        return (<WitkeyList action={action} witkeys={witkeys} isFetching = {witkeys.isFetching} errorMessage={errorMessage}/>)
     }
 }
 
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch, props)=> {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExclusiveWitkeys);
+export default connect(mapStateToProps, mapDispatchToProps)(WitkeyContainer);

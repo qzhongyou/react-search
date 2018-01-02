@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Services from "./services";
+import ServiceList from "./ServiceList";
 
-class Similar extends Component {
+class SimilarServiceList extends Component {
     componentWillReceiveProps(nextProps) {
         if(nextProps.id !== this.props.id){
             this.props.fetchSimilarservices();
@@ -15,10 +15,10 @@ class Similar extends Component {
     render() {
         return (
         <div>
-            <Services {...this.props} />
+            <ServiceList {...this.props} />
         </div>
         )
     }
 }
 
-export  default Similar;
+export  default SimilarServiceList;

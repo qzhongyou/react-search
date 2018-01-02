@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {List, Avatar} from "antd";
-import "./witkey.less"
+import "./WitkeyList.less"
 import  ErrorMessage from "../common/ErrorMessage";
 import IsFetching from "../common/IsFetching";
 
@@ -27,7 +27,7 @@ const avatar = (uid, size) => {
 
 @ErrorMessage
 @IsFetching
-class Witkey extends Component {
+class WitkeyList extends Component {
     static propTypes = {
         witkeys: PropTypes.object.isRequired,
         errorMessage: PropTypes.string.isRequired
@@ -70,4 +70,4 @@ class Witkey extends Component {
     }
 }
 
-export default Witkey;
+export default WitkeyList;

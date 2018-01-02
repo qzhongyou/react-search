@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Services from "./services";
+import ServiceList from "./ServiceList";
 import moment from "moment";
 import {DatePicker} from "antd";
 
@@ -20,7 +20,7 @@ class Footprint extends Component {
         return (
         <div>
             <DatePicker defaultValue={moment(date, dateFormat)} format={dateFormat} onChange ={selectDate} />
-            <Services {...this.props} />
+            <ServiceList {...this.props} />
         </div>
         )
     }

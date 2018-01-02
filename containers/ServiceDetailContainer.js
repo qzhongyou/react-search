@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as serviceDetailAction from "../actions/serviceDetailAction";
-import Service from "../components/ServiceDetail/serviceDetail";
+import ServiceDetail from "../components/ServiceDetail/ServiceDetail";
 
 class ServiceDetail extends Component {
     render() {
         const {action, serviceDetail, errorMessage} = this.props;
-        return (<Service  action = {action} serviceDetail ={serviceDetail} isFetching ={serviceDetail.isFetching} errorMessage ={errorMessage}/>)
+        return (<ServiceDetail  action = {action} serviceDetail ={serviceDetail} isFetching ={serviceDetail.isFetching} errorMessage ={errorMessage}/>)
     }
 }
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Row, Col} from "antd";
-import "./serviceDetail.less";
+import "./ServiceDetail.less";
 import  ErrorMessage from "../common/ErrorMessage";
 import IsFetching from "../common/IsFetching";
 
