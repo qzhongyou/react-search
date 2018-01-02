@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         case SERVICES_SUCCESS:
             return {
                 isFetching: false,
-                services: [...action.payload[0].services]
+                services: action.payload[0] && action.payload[0].services ? [...action.payload[0].services] : []
             }
         case SERVICES_FAILURE:
             return {

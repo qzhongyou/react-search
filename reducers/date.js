@@ -3,7 +3,7 @@ import { SELECT_DATE } from "../actions/dateAction";
 const initialState = () => {
     const date =new Date();
     return {
-        date:date.getFullYear().toString()+(date.getMonth()+1)+date.getDate()
+        date:date.getFullYear().toString()+("0"+(date.getMonth()+1)).substr(-2)+("0"+(date.getDate()+1)).substr(-2)
     }
 }
 
