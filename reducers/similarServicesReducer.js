@@ -1,4 +1,4 @@
-import {SIMILAR_SERVICES} from  "../actions/similarAction";
+import {SIMILAR_SERVICES} from  "../actions/similarServicesAction";
 
 const initialState = {
     isFetching: false,

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
-import * as similarAction from "../actions/similarAction";
+import * as similarAction from "../actions/similarServicesAction";
 import Service from "../components/Services/similar";
 
 class SimilarServices extends Component {
