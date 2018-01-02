@@ -51,7 +51,7 @@ export default ({dispatch}) => next => action => {
 
         // pending action
         dispatch({
-            type: TYPE + CONNECTTOR +  SUFFIXES[PENDING],
+            type: TYPE + CONNECTTOR + SUFFIXES[PENDING],
             ...(action.options ? {options: action.options} : {})
         })
 

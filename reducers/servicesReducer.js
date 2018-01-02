@@ -7,9 +7,9 @@ const initialState = {
 export default (state = initialState, action) => {
 
     const CONNECTTOR = (action.options && action.options.connector) || "_";
-    const SERVICES_PENDING = [SERVICES,"PENDING"].join(CONNECTTOR);
-    const SERVICES_SUCCESS = [SERVICES,"SUCCESS"].join(CONNECTTOR);
-    const SERVICES_FAILURE = [SERVICES,"FAILURE"].join(CONNECTTOR);
+    const SERVICES_PENDING = [SERVICES, "PENDING"].join(CONNECTTOR);
+    const SERVICES_SUCCESS = [SERVICES, "SUCCESS"].join(CONNECTTOR);
+    const SERVICES_FAILURE = [SERVICES, "FAILURE"].join(CONNECTTOR);
 
     switch (action.type) {
         case SERVICES_PENDING:
