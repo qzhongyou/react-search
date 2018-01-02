@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as similarAction from "../actions/similarServicesAction";
-import Service from "../components/Services/similar";
+import SimilarServiceList from "../components/Services/SimilarServiceList";
 
-class SimilarServices extends Component {
+class SimilarServicesContainer extends Component {
     render() {
         const {fetchSimilarservices, similarServices, errorMessage, match} = this.props;
-        return (<Service fetchSimilarservices = {fetchSimilarservices} id = {match.params.id} services={similarServices} isFetching ={similarServices.isFetching} errorMessage={errorMessage}/>)
+        return (<SimilarServiceList fetchSimilarservices = {fetchSimilarservices} id = {match.params.id} services={similarServices} isFetching ={similarServices.isFetching} errorMessage={errorMessage}/>)
     }
 }
 
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch, props)=> {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SimilarServices);
+export default connect(mapStateToProps, mapDispatchToProps)(SimilarServicesContainer);

@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as serviceDetailAction from "../actions/serviceDetailAction";
 import ServiceDetail from "../components/ServiceDetail/ServiceDetail";
 
-class ServiceDetail extends Component {
+class ServiceDetailContainer extends Component {
     render() {
         const {action, serviceDetail, errorMessage} = this.props;
         return (<ServiceDetail  action = {action} serviceDetail ={serviceDetail} isFetching ={serviceDetail.isFetching} errorMessage ={errorMessage}/>)
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch)=> {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ServiceDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ServiceDetailContainer);
