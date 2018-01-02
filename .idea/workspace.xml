@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef0213a0-aacc-4258-b35a-145e2db3c0a9" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/reducers/similar.js" afterPath="$PROJECT_DIR$/reducers/similarServicesReducer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actions/similarAction.js" afterPath="$PROJECT_DIR$/actions/similarAction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/middleware/redux-fetch.js" afterPath="$PROJECT_DIR$/middleware/redux-fetch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reducers/index.js" afterPath="$PROJECT_DIR$/reducers/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reducers/servicesReducer.js" afterPath="$PROJECT_DIR$/reducers/servicesReducer.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/react_search_node_modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/react-search.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="react-search.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,8 +54,18 @@
       <file leaf-file-name="servicesReducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reducers/servicesReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            <state relative-caret-position="240">
+              <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -78,12 +91,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reducers/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="168">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,7 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/containers/Root.prod.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/reducers/app.js" />
         <option value="$PROJECT_DIR$/components/TodoItem.js" />
@@ -147,6 +161,7 @@
         <option value="$PROJECT_DIR$/reducers/servicesReducer.js" />
         <option value="$PROJECT_DIR$/reducers/similarServicesReducer.js" />
         <option value="$PROJECT_DIR$/reducers/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -340,12 +355,12 @@
       <workItem from="1513769961853" duration="5850000" />
       <workItem from="1514272803677" duration="9132000" />
       <workItem from="1514366490250" duration="1441000" />
-      <workItem from="1514878202405" duration="961000" />
+      <workItem from="1514878202405" duration="1124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72801000" />
+    <option name="totallyTimeSpent" value="72964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="19" width="1280" height="716" extended-state="0" />
@@ -398,13 +413,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reducers/todos.js" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/Services/services.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -710,14 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reducers/servicesReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reducers/similarServicesReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -728,8 +728,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        <state relative-caret-position="168">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reducers/servicesReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding />
         </state>
       </provider>
