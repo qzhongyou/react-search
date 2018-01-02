@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
-import * as exclusiveAction from "../actions/exclusiveAction";
+import * as exclusiveAction from "../actions/witkeyAction";
 import Witkey from "../components/witkey/witkey";
 
 class ExclusiveWitkeys extends Component {
     render() {
-        const {action, exclusive, errorMessage} = this.props;
-        return (<Witkey action={action} exclusive={exclusive} isFetching = {exclusive.isFetching} errorMessage={errorMessage}/>)
+        const {action, witkeys, errorMessage} = this.props;
+        return (<Witkey action={action} witkeys={witkeys} isFetching = {witkeys.isFetching} errorMessage={errorMessage}/>)
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        exclusive: state.exclusive,
+        witkeys: state.witkeys,
         errorMessage: state.errorMessage
     }
 }

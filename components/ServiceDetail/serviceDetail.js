@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {Row  ,Col } from "antd";
+import {Row, Col} from "antd";
 import "./serviceDetail.less";
 import  ErrorMessage from "../common/ErrorMessage";
 import IsFetching from "../common/IsFetching";
@@ -10,17 +10,18 @@ import IsFetching from "../common/IsFetching";
 class ServceDetail extends Component {
     componentWillMount() {
         const {action, match} =this.props;
-        action.loadServiceDetail(match.params.id);
+        action.fetchServiceDetail(match.params.id);
     }
 
     render() {
         const {serviceDetail} = this.props;
-        const { service } = serviceDetail;
+        const {service} = serviceDetail;
 
         return (
             <Row className="service-detail" type="flex" justify="space-around">
                 <Col span={5}>
-                    <img className="service-img" src={`http://rms.zhubajie.com/resource/redirect?key=${service.image}`} alt={`${service.title}`}/>
+                    <img className="service-img" src={`http://rms.zhubajie.com/resource/redirect?key=${service.image}`}
+                         alt={`${service.title}`}/>
                 </Col>
                 <Col span={18}>
                     <h3>{service.title}</h3>
@@ -32,7 +33,7 @@ class ServceDetail extends Component {
                     <p>{service.provinceName}&nbsp;&nbsp;{service.cityName}</p>
                     <Row>
                         <Col span={6}>
-                            <p>价格:{service.price}{service.unit?'/'+service.unit:''}</p>
+                            <p>价格:{service.price}{service.unit ? '/' + service.unit : ''}</p>
                         </Col>
                         <Col span={12}>
                             <p>成交量:{service.amount}</p>

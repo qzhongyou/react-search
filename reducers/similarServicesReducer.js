@@ -1,4 +1,4 @@
-import {SIMILAR_SERVICES} from  "../actions/similarAction";
+import {SIMILAR_SERVICES} from  "../actions/similarServicesAction";
 
 const initialState = {
     isFetching: false,
@@ -21,12 +21,12 @@ export default  (state = initialState, action) => {
         case SIMILAR_SERVICES_SUCCESS:
             return {
                 isFetching:false,
-                services:[...action.service]
+                services:[...action.payload]
             }
         case SIMILAR_SERVICES_FAILURE:
             return {
                 isFetching:false,
-                services:[...state.service]
+                services:[...state.services]
             }
         default:
             return state

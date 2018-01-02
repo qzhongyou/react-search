@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
-import {errorMessage} from './errorMessage';
-import {serviceDetail} from "./serviceDetail";
+import {errorMessage} from './errorMessageReducer';
+import serviceDetail from "./serviceDetailReducer";
 import similarServices from "./similarServicesReducer";
-import {exclusive} from "./exclusive";
-import {date} from "./date";
+import witkeys from "./witkeyReducer";
+import {date} from "./dateReducer";
 import services from "./servicesReducer";
 
 const rootReducer = combineReducers({
-    errorMessage, services, serviceDetail, similarServices, exclusive,date
+    errorMessage, services, serviceDetail, similarServices, witkeys, date
 });
 
 export default rootReducer;
