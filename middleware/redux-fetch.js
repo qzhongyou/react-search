@@ -23,7 +23,7 @@ export default ({dispatch}) => next => action => {
     // success handle
     const handleSuccess = (response) => {
         let payload = response;
-        let type = SUFFIXES[SUCCESS] + CONNECTTOR + TYPE;
+        let type = TYPE + CONNECTTOR + SUFFIXES[SUCCESS];
         let successAction = {...action, payload, type};
         dispatch(successAction);
         return successAction;
@@ -31,15 +31,15 @@ export default ({dispatch}) => next => action => {
 
     const handleParse = (response) => {
         let parseRes = response;
-        if(isJson){
-            parseRes =parseRes.json();
+        if (isJson) {
+            parseRes = parseRes.json();
         }
         return parseRes;
     }
     // error handle
     const handleFailure = (error) => {
         let payload = error.message;
-        let type = SUFFIXES[FAILURE] + CONNECTTOR + TYPE;
+        let type = TYPE + CONNECTTOR + SUFFIXES[FAILURE];
         let failureAction = {...action, payload, type};
         dispatch(failureAction);
         return failureAction;
@@ -51,7 +51,7 @@ export default ({dispatch}) => next => action => {
 
         // pending action
         dispatch({
-            type: SUFFIXES[PENDING] + CONNECTTOR + TYPE,
+            type: TYPE + CONNECTTOR +  SUFFIXES[PENDING],
             ...(action.options ? {options: action.options} : {})
         })
 

@@ -1,6 +1,4 @@
-import {SUFFIXES} from "../middleware/redux-fetch";
 import {SERVICES}  from "../actions/servicesAction";
-const {PENDING, SUCCESS, FAILURE}  = SUFFIXES;
 
 const initialState = {
     isFetching: false,
@@ -9,22 +7,22 @@ const initialState = {
 export default (state = initialState, action) => {
 
     const CONNECTTOR = (action.options && action.options.connector) || "_";
-    const PENDING_SERVICES = [PENDING, SERVICES].join(CONNECTTOR);
-    const SUCCESS_SERVICES = [SUCCESS, SERVICES].join(CONNECTTOR);
-    const FAILURE_SERVICES = [FAILURE, SERVICES].join(CONNECTTOR);
+    const SERVICES_PENDING = [SERVICES,"PENDING"].join(CONNECTTOR);
+    const SERVICES_SUCCESS = [SERVICES,"SUCCESS"].join(CONNECTTOR);
+    const SERVICES_FAILURE = [SERVICES,"FAILURE"].join(CONNECTTOR);
 
     switch (action.type) {
-        case PENDING_SERVICES:
+        case SERVICES_PENDING:
             return {
                 ...initialState,
                 isFetching: true
             }
-        case SUCCESS_SERVICES:
+        case SERVICES_SUCCESS:
             return {
                 isFetching: false,
                 services: [...action.payload[0].services]
             }
-        case FAILURE_SERVICES:
+        case SERVICES_FAILURE:
             return {
                 isFetching: false,
                 services: [...state]
