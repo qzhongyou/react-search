@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Alert} from "antd";
-const  ErrorMessage = (WrappedComponent)=>(props) => {
-    const errorMessage = ()=>{
+const ErrorMessage = (WrappedComponent)=>(props) => {
+    const errorMessage = ()=> {
         const {errorMessage} = props;
         if (errorMessage) {
             return (
@@ -18,7 +18,7 @@ const  ErrorMessage = (WrappedComponent)=>(props) => {
                 {errorMessage()}
                 <WrappedComponent {...props}/>
             </div>
-        )
+    )
 }
 
 

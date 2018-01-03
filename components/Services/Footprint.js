@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import ServiceList from "./ServiceList";
 import moment from "moment";
 import {DatePicker} from "antd";
+import ServiceList from "./ServiceList";
 
 class Footprint extends Component {
     componentWillReceiveProps(nextProps) {

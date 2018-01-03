@@ -13,9 +13,9 @@ const IsFetching = (WrappedComponent)=>(props) => {
     }
 
     return (<div>
-            {fetchMessage()}
-            <WrappedComponent {...props}/>
-        </div>)
+                {fetchMessage()}
+                <WrappedComponent {...props}/>
+            </div>)
 }
 
 export default IsFetching;
