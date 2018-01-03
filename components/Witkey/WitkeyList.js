@@ -29,17 +29,11 @@ const avatar = (uid, size) => {
 @IsFetching
 class WitkeyList extends Component {
     static propTypes = {
-        witkeys: PropTypes.object.isRequired,
-        errorMessage: PropTypes.string.isRequired
-    }
-
-    componentWillMount() {
-        this.props.action.fetchwitkeys();
+        witkeys: PropTypes.object.isRequired
     }
 
     render() {
         const {witkeys} = this.props;
-
         return (
             <List className="witkey"
                   itemLayout="vertical"

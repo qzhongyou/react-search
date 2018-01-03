@@ -3,24 +3,36 @@ import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import * as serviceDetailAction from "../actions/serviceDetailAction";
 import ServiceDetail from "../components/ServiceDetail/ServiceDetail";
+import ErrorMessage from "../components/common/ErrorMessage";
+import IsFetching from "../components/common/IsFetching";
 
+@ErrorMessage
 class ServiceDetailContainer extends Component {
+
+    componentWillMount() {
+        const {match} =this.props;
+        this.props.fetchServiceDetail(match.params.id);
+    }
+
     render() {
-        const {action, serviceDetail, errorMessage} = this.props;
-        return (<ServiceDetail  action = {action} serviceDetail ={serviceDetail} isFetching ={serviceDetail.isFetching} errorMessage ={errorMessage}/>)
+        const {serviceDetail} = this.props;
+        return (
+        IsFetching(this.props) ||
+        <ServiceDetail serviceDetail={serviceDetail}/>)
     }
 }
 
 const mapStateToProps = (state) => {
     return {
         serviceDetail: state.serviceDetail,
-        errorMessage: state.errorMessage
+        errorMessage: state.errorMessage,
+        isFetching:state.serviceDetail.isFetching
     }
 }
 
 const mapDispatchToProps = (dispatch)=> {
     return {
-        action: bindActionCreators(serviceDetailAction, dispatch)
+        fetchServiceDetail: bindActionCreators(serviceDetailAction.fetchServiceDetail, dispatch)
     }
 }
 

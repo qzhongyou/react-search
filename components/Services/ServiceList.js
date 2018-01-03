@@ -2,11 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Row, Col} from "antd";
 import ServiceItem from "./ServiceItem";
-import ErrorMessage from "../common/ErrorMessage";
-import IsFetching from "../common/IsFetching";
 
-@ErrorMessage
-@IsFetching
 class ServiceList extends Component {
     static propTypes = {
         services: PropTypes.object.isRequired

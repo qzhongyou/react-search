@@ -10,6 +10,7 @@ export default  ({selectedkeys}) => {
             <Menu.Item key="/exclusive">
                 <Link to="/exclusive">专属服务商</Link>
             </Menu.Item>
+            {/*防止key值重复*/}
             { ["/", "/exclusive"].indexOf(selectedkeys) < 0 &&
             <Menu.Item key={selectedkeys}>
                 <Route path="/similar/:id" render={()=>(

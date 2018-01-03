@@ -2,21 +2,12 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Row, Col} from "antd";
 import "./ServiceDetail.less";
-import ErrorMessage from "../common/ErrorMessage";
-import IsFetching from "../common/IsFetching";
 
-@ErrorMessage
-@IsFetching
 class ServceDetail extends Component {
-    componentWillMount() {
-        const {action, match} =this.props;
-        action.fetchServiceDetail(match.params.id);
-    }
 
     render() {
         const {serviceDetail} = this.props;
         const {service} = serviceDetail;
-
         return (
             <Row className="service-detail" type="flex" justify="space-around">
                 <Col span={5}>
