@@ -26,10 +26,16 @@ class ServceDetail extends Component {
                 <Col span={18}>
                     <h3>{service.title}</h3>
                     <p>服务商:&nbsp;{service.userName}</p>
+
                     <p className="expertname">服务范围:&nbsp;
-                        {service.expertName && service.expertName.map(item=>(<span>{item}</span>))}
-                        {service.expertNameNoIncome && service.expertNameNoIncome.map(item=>(<span>{item}</span>))}
+                        {service.expertName && service.expertName.map(item=>(
+                            <span key={item}>{item}</span>
+                        ))}
+                        {service.expertNameNoIncome && service.expertNameNoIncome.map(item=>(
+                            <span key={item}>{item}</span>
+                        ))}
                     </p>
+
                     <p>{service.provinceName}&nbsp;&nbsp;{service.cityName}</p>
                     <Row>
                         <Col span={6}>

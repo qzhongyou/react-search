@@ -1,4 +1,4 @@
-export const errorMessage = (state = null, action)=> {
+export const errorMessage = (state = "", action)=> {
     const {error} =action;
     if (error) {
         return error

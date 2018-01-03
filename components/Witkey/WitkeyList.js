@@ -55,14 +55,18 @@ class WitkeyList extends Component {
                               title={item.brandName}
                               description={item.address}
                           />
+
                           <p>
                               主营类目:{item.expertName && item.expertName[0]}
                           </p>
+
                           <p className="service-expertname">
-                              服务范围:{item.expertName && item.expertName.map(expertName=> {
-                              return <span>{expertName}</span>
-                          }) }
+                              服务范围:
+                              {item.expertName && item.expertName.map(expertName=> {
+                                  return <span key={expertName}>{expertName}</span>
+                              }) }
                           </p>
+
                       </List.Item>
                   )}
             />
