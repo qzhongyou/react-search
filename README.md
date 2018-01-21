@@ -121,6 +121,8 @@ export const WitkeyContainer = (props) => (
 
  <Route exact path="/exclusive" component={WitkeyContainer}/>
 ```
+#### react-router & react-router-dom 
+react-router提供了核心的组件和方法,react-router-dom则在此基础上提供了Link这些DOM组件。
 
 ### Redux
     即将编写。。。
