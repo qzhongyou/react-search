@@ -7,5 +7,4 @@ class Footprint extends Component {
     }
 }
 
-
 export  default  Footprint;

@@ -1,7 +1,9 @@
 ## react-search
-> react,redux项目 开发详情 和 个人总结
 
-注: 因为接口数据来至zbj域名,如果需要运行项目,为能正确获取到数据,请先绑定host `127.0.0.1	 search.zbj.com`。
+## 技术栈
+react + redux + react-router + webpack 
+
+## 运行项目
 
 #### 安装
 ```
@@ -14,40 +16,37 @@ npm start
 #### 访问
 [search.zbj.com:3000](search.zbj.com:3000)
 
+注: 因为接口数据来至zbj域名,如果需要运行项目,为能正确获取到数据。
+**请先绑定host `127.0.0.1	 search.zbj.com`,不然会报错**。
+**请先绑定host `127.0.0.1	 search.zbj.com`,不然会报错**。
+**请先绑定host `127.0.0.1	 search.zbj.com`,不然会报错**。
+重要的话说3遍。
+
 #### 说明
 1. 现webpack配置为简陋版,暂时不具参考性。
 2. 现服务端为dev类型服务,暂时不具参考性。
 3. 对于上面的问题,将在后续开发过程中依次解决。
-4. 项目进展详情和整个开发过程的困难将不断更新,在README中。
-5. 项目版本将以分支的形式展现,也就是出现在不同的分支里面。
-
-#### 12.18 v1.0
-* 项目基本功能完成,项目待优化。以后几天将详细介绍开发过程。
-
-#### 12.19 v1.0
-* 添加日期筛选功能,该功能需要注意两点:
-1. 该功能只有足迹页面具备,但和找相似页面使用的同一个展示主键,所以需要一下设置:
-```
- <Route path="/" exact render={()=>{ //首页显示
-     return  <DatePicker defaultValue={moment(date, dateFormat)} format={dateFormat} onChange ={selectDate} />
- }} />
-```
-2. 关于日期筛选功能实现的 思考。   
-* 首先日期筛选后应当触发`servicesAction`。这里触发的方式有2种,第一种在`onChange`事件中触发,将`dateString`作为日期的实参传入`servicesAction`,第二种将日期的state作为参数传入`servicesAction`,
-第二种方式采用了状态来触发行为,明显要优于第一种。
-```
- componentWillReceiveProps(nextProps){
-        if(nextProps.date !== this.props.date && nextProps.date !==""){
-            this.props.action(nextProps.date);
-        }
-    }
-```
-
-#### 12.20 v2.0
-* 将我的足迹页和找相似页公共的展示型组件进行解耦,拆分为两个不同展示型组件,分别引用公共组件。
-* 因为错误提示和loading效果,反复在各组件中使用,使用提取为公共高阶组件。
 
 
-#### 12.26 v2.0
-* 修复之前错误提示和loading效果的bug。之前因为每次loading之后,都会重新渲染WrappedComponent组件,导致不断触发componentWillMount,然后不断loading,一直循环。
-* 之前每次异步请求都需要反复写加载前,加载成功,失败的action,所以自定义中间件redux-fetch,来减少代码量。
+## 文档
+
+#### react优点 
+* 组件化。将一个应用拆分为组件的形式再进行组合,而对于每个组件来说,将应用状态和DOM进行拆分,最终提高了项目的后期**可维护性**。
+* 虚拟DOM。这是react的最大卖点之一。虚拟DOM的出现,使得react不需要每次状态改变都去访问DOM。而是生成新的虚拟DOM,和之前的虚拟DOM
+进行对比,然后将改变的部分进行渲染。这无疑降低了访问DOM的成本,使其具有**高性能**。(这是真的吗?想知道,看文章最后react的缺点)
+* 活跃的react社区。我觉得这点也是相当重要的,活跃的社区,提高了大量的,可靠的第三方库,大大减少了我们开发过程的成本。
+
+#### 组件 Props & State
+* 子组件和父组件之间可以通过Props进行数据的传递。
+* State表示组件的当前状态,通过**改变state进行页面的重新渲染**。
+* 兄弟组件之间,通过状态提升,把子组件的state数据提升至其共同的父组件当中保存。之后父组件可以通过props将状态数据传递到子组件当中,**实现通信**。
+
+#### 组件生命周期
+![react-lifecycle](./screenshot/react-lifecycle.png)
+
+#### react缺点
+* 虚拟DOM。这是react的优势也是有很大缺点的。首先,每次小小状态改变都要去生成新的虚拟DOM,如果这个虚拟DOM的结构复杂无疑带来很多开销。其次,比如:
+我们需要改变一个子组件的数据,但数据来至于父级。这时候,子组件的兄弟组件都会被重新执行render,生成虚拟DOM。还有,我们在做列表的时候,都必须加上key
+来提高性能。react本身并不能很好的处理这些问题,必须我们人为的通过添加key,通过shouldComponentUpdate方法比较,immutable等方法去提升性能。
+* 视图层。只使用react本身是不能构建一个合格的应用的,必须结合周边各种库的辅助。
+* Facebook前段时间闹出的版权专利事,大家都懂的,这可是程序员没法解决的问题。O__O "…"
