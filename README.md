@@ -42,28 +42,28 @@ npm start
 ### 组件生命周期
 ![来至网络react-lifecycle](./screenshot/react-lifecycle.png)
 #### 组件实例化创建
-* getDefaultProps
+* **getDefaultProps**  
 作用于组件类,设置默认的props,只调用一次。es6中使用静态属性static defaultProps表示。
-* getInitialState
+* **getInitialState**  
 实例创建时调用一次,设置默认state。es6中可以在constructor中设置this.state表示。
-* componentWillMount
+* **componentWillMount**  
 组件渲染前调用,这里可以*修改state值*,而*不会*再次触发render。
-* render
+* **render**  
 根据props和state创建虚拟DOM。
-* componentDidMount 
+* **componentDidMount**   
 渲染结束后调用,修改state将被渲染。可以通过findDOMNode去获取修改DOM。服务器端无法使用componentDidMount。
 
 #### 组件更新
-* componentWillReceivePorps(nextProps)
+* **componentWillReceivePorps(nextProps)**
 属性改变时调用,nextProps为更新后的props,这里容易混淆。
-* shouldComponentUpdate(nextProps, nextState)
+* **shouldComponentUpdate(nextProps, nextState)**
 nextProps,nextState分别为更新后的属性和状态。通常我们在这里判断属性和状态是否改变,是否需要重新渲染。如果返回true将渲染,false不会。
-* componentWillUpdate(nextProps, nextState)
+* **componentWillUpdate(nextProps, nextState)**
 组件更新渲染前调用,可以设置state。
-* componentDidUpdate()
+* **componentDidUpdate()**
 组件渲染后调用,修改state将被渲染。可以通过findDOMNode去获取修改DOM。
 #### 组件卸载
-* componentWillUnmount
+* **componentWillUnmount**
 组件将被卸载时调用,一般用来清除事件监听和定时器。
 
 ### React缺点
@@ -75,13 +75,13 @@ nextProps,nextState分别为更新后的属性和状态。通常我们在这里�
 
 ### React Router
 React Router为React提供了一个路由功能,根据路由规则渲染对应的组件。
-#### <BrowserRouter>
+#### \<BrowserRouter>
 * basename: string  当前位置的基准URL。
 * getUserConfirmation:func  导航到此页面前执行的函数,默认使用 window.confirm
 * forceRefresh:bool 当浏览器不支持 HTML5 的 history API 时强制刷新页面。
 * keyLength: number 设置`location.key`的长度。默认6。(key的作用：点击同一个链接时，每次该路由下的location.key都会改变，可以通过key的变化来刷新页面。)
 * children: node 组件
-#### <HashRouter>
+#### \<HashRouter>
 * basename: string
 * getUserConfirmation: func
 * hashType: string window.location.hash 使用的`hash`类型
