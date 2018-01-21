@@ -42,7 +42,7 @@ npm start
 * 兄弟组件之间,通过状态提升,把子组件的state数据提升至其共同的父组件当中保存。之后父组件可以通过props将状态数据传递到子组件当中,**实现通信**。
 
 #### 组件生命周期
-![react-lifecycle](./screenshot/react-lifecycle.png)
+![来至网络react-lifecycle](./screenshot/react-lifecycle.png)
 
 #### react缺点
 * 虚拟DOM。这是react的优势也是有很大缺点的。首先,每次小小状态改变都要去生成新的虚拟DOM,如果这个虚拟DOM的结构复杂无疑带来很多开销。其次,比如:
