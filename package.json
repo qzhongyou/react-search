@@ -52,6 +52,7 @@
     "babel-preset-es2015-loose": "^6.1.3",
     "babel-preset-react": "6.3.13",
     "babel-preset-stage-0": "^6.3.13",
+    "bundle-loader": "^0.5.5",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "node-libs-browser": "^0.5.2",
