@@ -54,16 +54,16 @@ npm start
 渲染结束后调用,修改state将被渲染。可以通过findDOMNode去获取修改DOM。服务器端无法使用componentDidMount。
 
 #### 组件更新
-* **componentWillReceivePorps(nextProps)**
+* **componentWillReceivePorps(nextProps)**  
 属性改变时调用,nextProps为更新后的props,这里容易混淆。
-* **shouldComponentUpdate(nextProps, nextState)**
+* **shouldComponentUpdate(nextProps, nextState)**  
 nextProps,nextState分别为更新后的属性和状态。通常我们在这里判断属性和状态是否改变,是否需要重新渲染。如果返回true将渲染,false不会。
-* **componentWillUpdate(nextProps, nextState)**
+* **componentWillUpdate(nextProps, nextState)**  
 组件更新渲染前调用,可以设置state。
-* **componentDidUpdate()**
+* **componentDidUpdate()**  
 组件渲染后调用,修改state将被渲染。可以通过findDOMNode去获取修改DOM。
 #### 组件卸载
-* **componentWillUnmount**
+* **componentWillUnmount**  
 组件将被卸载时调用,一般用来清除事件监听和定时器。
 
 ### React缺点
@@ -91,7 +91,7 @@ React Router为React提供了一个路由功能,根据路由规则渲染对应�
 #### 按需加载
 为了提升页面的性能,减少第一次渲染时js静态资源大小。一般我们会采用按需加载。
 * React Router 3
-```
+```javascript
 const WitkeyContainer = (location, cb) => {
     require.ensure([], require=> {
         cb(null, require("../containers/WitkeyContainer").default) //es6 使用default
@@ -104,7 +104,7 @@ const WitkeyContainer = (location, cb) => {
 
 * React Router 4
 这个稍微复杂些,需要先引用[bundle.js](https://github.com/qzhongyou/react-search/blob/master/route/bundle.js),然后
-```
+```javascript
 import Bundle from './bundle.js';
 
 //需要使用bundle-loader
