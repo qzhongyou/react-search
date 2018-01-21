@@ -4,17 +4,15 @@
 react + redux + react-router + webpack 
 
 ## 运行项目
-
-#### 安装
 ```
+// 安装
 git clone git@github.com:qzhongyou/react-serarch.git
-```
-#### 运行
-```
+// 运行
 npm start
-```
-#### 访问
+//访问
 [search.zbj.com:3000](search.zbj.com:3000)
+```
+
 
 注: 因为接口数据来至zbj域名,如果需要运行项目,为能正确获取到数据。
 **请先绑定host `127.0.0.1	 search.zbj.com`,不然会报错**。
