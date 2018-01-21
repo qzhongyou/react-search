@@ -91,9 +91,39 @@ React Router为React提供了一个路由功能,根据路由规则渲染对应�
 不再一一列举了,React Router更多属性看[文档](http://reacttraining.cn/)
 
 #### 按需加载
+为了提升页面的性能,减少第一次渲染时js静态资源大小。一般我们会采用按需加载。
+* React Router 3
+```
+const WitkeyContainer = (location, cb) => {
+    require.ensure([], require=> {
+        cb(null, require("../containers/WitkeyContainer").default) //es6 使用default
+    }, 'WitkeyContainer')  //WitkeyContainer 为 chunkName
+}
 
- 
 
+ <Route exact path="/exclusive" component={WitkeyContainer}/>
+```
+
+* React Router 4
+这个稍微复杂些,需要先引用[bundle.js](https://github.com/qzhongyou/react-search/blob/master/route/bundle.js),然后
+```
+import Bundle from './bundle.js';
+
+//需要使用bundle-loader
+import Witkey from "bundle-loader?lazy!../containers/WitkeyContainer"; 
+
+//props 需要传入不然使用不了 react Router中的location,match等属性
+export const WitkeyContainer = (props) => (
+    <Bundle load={Witkey}>
+        {(Container) => <Container {...props}/>}
+    </Bundle>
+)
+
+ <Route exact path="/exclusive" component={WitkeyContainer}/>
+```
+
+### Redux
+    即将编写。。。
 
 
 
