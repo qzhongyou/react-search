@@ -123,7 +123,60 @@ export const WitkeyContainer = (props) => (
 react-router提供了核心的组件和方法,react-router-dom则在此基础上提供了Link等DOM组件。
 
 ### Redux
-    即将编写。。。
+
+#### 三大原则 (来自[文档](http://cn.redux.js.org/docs/introduction/ThreePrinciples.html))
+* 单一数据源 整个应用的state被储存在一棵object tree中，并且这个object tree只存在于**唯一**一个store中。
+* State只读 唯一改变state的方法就是触发**action**，action是一个用于描述已发生事件的普通对象。
+* 使用纯函数来执行修改  为了描述action如何改变state tree ，你需要编写reducers。 
+
+#### Redux 核心API
+* **createStore()**
+Redux核心API都来至于createStore最终创建的Store对象。`createStore(reducer, [preloadedState], enhancer)`接受3个参数,
+第一个参数为`reducer`,它应该为一个纯函数,接受state和action2个参数。根据action对state进行处理返回新的state。`preloadedState`
+初始状态值,一般来至服务器端。`enhancer`是一个高阶函数,接受createStore作为参数,对createStore进行争强,并返回增强后的createStore。
+一般在插入中间件(MiddleWare)的时候需要使用。简单说下,直接上源码:
+
+```javascript
+//createStore.js 源码
+export default function createStore(reducer, preloadedState, enhancer) {
+    //判断入参类型等操作
+    ....... 
+    //enhancer为高阶函数,将createStore 作为入参
+    return enhancer(createStore)(reducer, preloadedState)
+}
+```
+通常我们会将`applyMiddleware`调用后返回的函数,作为`enhancer`。
+```javascript
+// applyMiddleware.js 
+return function (createStore) {
+    //结合上面createStore中源码,enhancer这里为空
+    return function (reducer, preloadedState, enhancer) {
+      //返回store
+      var store = createStore(reducer, preloadedState, enhancer);
+      var _dispatch = store.dispatch;
+      var chain = [];
+
+      var middlewareAPI = {
+        getState: store.getState,
+        dispatch: function dispatch(action) {
+          return _dispatch(action);
+        }
+      };
+      chain = middlewares.map(function (middleware) {       //chain为数组
+        return middleware(middlewareAPI);   //中间件调用传入store,返回(next=>action=>{...})函数
+      });
+      //compose为函数串联执行 如:f1(f2(f3(store.dispatch))), 实现了中间件按顺序执行
+      _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
+      return _extends({}, store, {       //返回增强store
+        dispatch: _dispatch
+      });
+    };
+  };
+```
+不在细讲middleware原理了,最后上一张middleware流程图,解释调用next与dispatch区别
+![流程图](./screenshot/middleware.jpg)
+
+即将编写。。。
 
 
 
