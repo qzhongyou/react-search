@@ -26,7 +26,7 @@ npm start
 3. 对于上面的问题,将在后续开发过程中依次解决。
 
 
-## 文档
+## React
 
 ### React优点 
 * 组件化。将一个应用拆分为组件的形式再进行组合,而对于每个组件来说,将应用状态和DOM进行拆分,最终提高了项目的后期**可维护性**。
@@ -73,8 +73,9 @@ nextProps,nextState分别为更新后的属性和状态。通常我们在这里�
 * 视图层。只使用react本身是不能构建一个合格的应用的,必须结合周边各种库的辅助。
 * Facebook前段时间闹出的版权专利事,大家都懂的,这可是程序员没法解决的问题。O__O "…"
 
-### React Router
+## React Router
 React Router为React提供了一个路由功能,根据路由规则渲染对应的组件。
+### React Router API
 #### \<BrowserRouter>
 * basename: string  当前位置的基准URL。
 * getUserConfirmation:func  导航到此页面前执行的函数,默认使用 window.confirm
@@ -88,7 +89,7 @@ React Router为React提供了一个路由功能,根据路由规则渲染对应�
 * children: node
 不再一一列举了,React Router更多属性看[文档](http://reacttraining.cn/)
 
-#### 按需加载
+### 按需加载
 为了提升页面的性能,减少第一次渲染时js静态资源大小。一般我们会采用按需加载。
 * React Router 3
 ```javascript
@@ -122,19 +123,21 @@ export const WitkeyContainer = (props) => (
 #### react-router & react-router-dom 
 react-router提供了核心的组件和方法,react-router-dom则在此基础上提供了Link等DOM组件。
 
-### Redux
+## Redux
 
-#### 三大原则 (来自[文档](http://cn.redux.js.org/docs/introduction/ThreePrinciples.html))
+### 三大原则 (来自[文档](http://cn.redux.js.org/docs/introduction/ThreePrinciples.html))
 * 单一数据源 整个应用的state被储存在一棵object tree中，并且这个object tree只存在于**唯一**一个store中。
 * State只读 唯一改变state的方法就是触发**action**，action是一个用于描述已发生事件的普通对象。
 * 使用纯函数来执行修改  为了描述action如何改变state tree ，你需要编写reducers。 
 
-#### Redux 核心API
-* **createStore()**
+### Redux 核心API
+
+#### Store 
+* **createStore()**  
 Redux核心API都来至于createStore最终创建的Store对象。`createStore(reducer, [preloadedState], enhancer)`接受3个参数,
 第一个参数为`reducer`,它应该为一个纯函数,接受state和action2个参数。根据action对state进行处理返回新的state。`preloadedState`
 初始状态值,一般来至服务器端。`enhancer`是一个高阶函数,接受createStore作为参数,对createStore进行争强,并返回增强后的createStore。
-一般在插入中间件(MiddleWare)的时候需要使用。简单说下,直接上源码:
+通常我们会将`applyMiddleware`调用后返回的函数,作为`enhancer`。
 
 ```javascript
 //createStore.js 源码
@@ -145,38 +148,86 @@ export default function createStore(reducer, preloadedState, enhancer) {
     return enhancer(createStore)(reducer, preloadedState)
 }
 ```
-通常我们会将`applyMiddleware`调用后返回的函数,作为`enhancer`。
+#### store对象的方法 
+* **getState()**    
+获取当前状态并返回,整个state树的状态。
+* **subscribe(listener)**  
+添加一个监听器,每当state树改变时就会触发,通常我们可以在listener中使用getState获取当前的状态。为什么我们没有在react
+项目中使用呢?因为在react-redux中的connect方法中已经帮我们做了处理。
+* **dispatch(action)**      
+触发一个action,唯一的改变state树的方法。如果添加了中间件其实这里的dispatch是`_dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);`
+返回的`_dispatch`。这时触发`dispatch(action)`将一层一层的去调用middleware,和下面的middleware流程图一样。
+* **replaceReducer**    
+替换当前reducer。
+
+#### 其他方法
+* **combineReducers(reducers)**  
+combineReducers入参为一个或多个reducer构成**对象**,reducer通常是一个接受state和action为参数,根据action返回新的state的纯函数。
+combineReducers是一个高阶函数,`combineReducers(reducers)`其实返回了一个新的reducer入参对象的key值拆分state,传入对应的reducer中,最后返回新的state。源码:
 ```javascript
-// applyMiddleware.js 
-return function (createStore) {
-    //结合上面createStore中源码,enhancer这里为空
-    return function (reducer, preloadedState, enhancer) {
-      //返回store
-      var store = createStore(reducer, preloadedState, enhancer);
-      var _dispatch = store.dispatch;
-      var chain = [];
-
-      var middlewareAPI = {
-        getState: store.getState,
-        dispatch: function dispatch(action) {
-          return _dispatch(action);
-        }
-      };
-      chain = middlewares.map(function (middleware) {       //chain为数组
-        return middleware(middlewareAPI);   //中间件调用传入store,返回(next=>action=>{...})函数
-      });
-      //compose为函数串联执行 如:f1(f2(f3(store.dispatch))), 实现了中间件按顺序执行
-      _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
-      return _extends({}, store, {       //返回增强store
-        dispatch: _dispatch
-      });
-    };
-  };
+ return function combination() {
+   ....
+   for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+   ....
+     var reducer = finalReducers[_key];
+     var previousStateForKey = state[_key];
+     var nextStateForKey = reducer(previousStateForKey, action);
+   ....
+   }
+   ...
+   return hasChanged ? nextState : state;
+ }
 ```
-不在细讲middleware原理了,最后上一张middleware流程图,解释调用next与dispatch区别
-![流程图](./screenshot/middleware.jpg)
+* **applyMiddleware(...middlewares)**   
+ applyMiddleware通过串联的方式使得能让中间件依次执行,返回一个增强的store。其中,这时的store.dispatch为中间件调用后返回的入参为action的匿名函数。
+ middleware为一个高阶函数,结构为`(store)=>(next)=>(action)=>{....}`;
+ ```javascript
+ // applyMiddleware.js 
+ return function (createStore) {
+     //结合上面createStore中源码,enhancer这里为空
+     return function (reducer, preloadedState, enhancer) {
+       //返回store
+       var store = createStore(reducer, preloadedState, enhancer);
+       var _dispatch = store.dispatch;
+       var chain = [];
+ 
+       var middlewareAPI = {
+         getState: store.getState,
+         dispatch: function dispatch(action) {
+           return _dispatch(action);
+         }
+       };
+       chain = middlewares.map(function (middleware) {       //chain为数组
+         return middleware(middlewareAPI);   //中间件调用传入store,返回(next=>action=>{...})函数
+       });
+       //compose为函数串联执行 如:f1(f2(f3(store.dispatch))), 实现了中间件按顺序执行
+       _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
+       return _extends({}, store, {       //返回增强store
+         dispatch: _dispatch
+       });
+     };
+   };
+ ```
 
-即将编写。。。
+ middleware流程图,解释调用next与dispatch区别
+ ![流程图](./screenshot/middleware.jpg)
+ 
+ * **bindActionCreators(actionCreators,dispatch)**
+ bindActionCreators内部对actionCreators添加dispatch处理,返回一个函数。调用bindActionCreators后,直接调用返回函数,不再调用dispatch。
+ 
+ ### React-Redux
+ * **\<Provider>**  
+ `<Provider store>`使组件层级中的`connect()`方法都能够获得 Redux store。正常情况下，你的根组件应该嵌套在 <Provider> 中才能使用 connect() 方法。
+ * **connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])**      
+ 连接 `React` 组件与 `Redux store`。
+**[mapStateToProps(state, [ownProps]): stateProps]**    
+当store树改变将会调用该函数。该回调函数必须返回一个纯对象，这个对象会与组件的`props`合并。如果指定了该回调函数中的第二个参数`ownProps`，则该参数的值为传递到组件的`props`，而且只要组件接收到新的 props，`mapStateToProps`也会被调用。
+**[mapDispatchToProps(dispatch, [ownProps]): dispatchProps]**        
+如果为mapDispatchToProps为一个对象,那么对象内的函数将作为`action creator`,函数名称作为`props`属性名称。对象内的每一个函数将返回一个`function () { return dispatch(actionCreator.apply(undefined, arguments));}`这样的新函数。
+如果mapDispatchToProps为函数,将根据开发者自己将`action creator`和`dispatch`绑定在一起,一般我们使用`bindActionCreators`完成绑定。如果指定了该回调函数中第二个参数`ownProps`，该参数的值为传递到组件的`props`，而且只要组件接收到`props`，`mapDispatchToProps`也会被调用。
+**[mergeProps(stateProps, dispatchProps, ownProps): props]**    
+`mapStateToProps()`与`mapDispatchToProps()`的执行结果和组件自身的`props`将传入到这个回调函数中。该回调函数返回的对象将作为`props`传递到被包装的组件中。
+
 
 
 
