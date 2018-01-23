@@ -219,14 +219,21 @@ combineReducers是一个高阶函数,`combineReducers(reducers)`其实返回了�
  * **\<Provider>**  
  `<Provider store>`使组件层级中的`connect()`方法都能够获得 Redux store。正常情况下，你的根组件应该嵌套在 <Provider> 中才能使用 connect() 方法。
  * **connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])**      
- 连接 `React` 组件与 `Redux store`。
+ 连接 `React` 组件与 `Redux store`。           
+ 
 **[mapStateToProps(state, [ownProps]): stateProps]**    
-当store树改变将会调用该函数。该回调函数必须返回一个纯对象，这个对象会与组件的`props`合并。如果指定了该回调函数中的第二个参数`ownProps`，则该参数的值为传递到组件的`props`，而且只要组件接收到新的 props，`mapStateToProps`也会被调用。
+当store树改变将会调用该函数。该回调函数必须返回一个纯对象，这个对象会与组件的`props`合并。如果指定了该回调函数中的第二个参数`ownProps`，
+则该参数的值为传递到组件的`props`，而且只要组件接收到新的 props，`mapStateToProps`也会被调用。
+    
 **[mapDispatchToProps(dispatch, [ownProps]): dispatchProps]**        
-如果为mapDispatchToProps为一个对象,那么对象内的函数将作为`action creator`,函数名称作为`props`属性名称。对象内的每一个函数将返回一个`function () { return dispatch(actionCreator.apply(undefined, arguments));}`这样的新函数。
-如果mapDispatchToProps为函数,将根据开发者自己将`action creator`和`dispatch`绑定在一起,一般我们使用`bindActionCreators`完成绑定。如果指定了该回调函数中第二个参数`ownProps`，该参数的值为传递到组件的`props`，而且只要组件接收到`props`，`mapDispatchToProps`也会被调用。
-**[mergeProps(stateProps, dispatchProps, ownProps): props]**    
-`mapStateToProps()`与`mapDispatchToProps()`的执行结果和组件自身的`props`将传入到这个回调函数中。该回调函数返回的对象将作为`props`传递到被包装的组件中。
+如果为mapDispatchToProps为一个对象,那么对象内的函数将作为`action creator`,函数名称作为`props`属性名称。对象内的每一个函数将返回一个
+`function () { return dispatch(actionCreator.apply(undefined, arguments));}`这样的新函数。如果mapDispatchToProps为函数,
+将根据开发者自己将`action creator`和`dispatch`绑定在一起,一般我们使用`bindActionCreators`完成绑定。如果指定了该回调函数中第二个参
+数`ownProps`，该参数的值为传递到组件的`props`，而且只要组件接收到`props`，`mapDispatchToProps`也会被调用。            
+ 
+**[mergeProps(stateProps, dispatchProps, ownProps): props]**       
+`mapStateToProps()`与`mapDispatchToProps()`的执行结果和组件自身的`props`将传入到这个回调函数中。该回调函数返回的对象将作为`props`
+传递到被包装的组件中。
 
 
 
